@@ -1,0 +1,51 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+input {
+  padding: 8px;
+  font-family: inherit;
+  width: 387px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+button {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.signup_form,
+.signup_form_add {
+  display: flex;
+}
+/* .button-list-block {
+  display: grid;
+} */
+
+.button-list {
+  margin-top: 25px;
+  display: grid;
+  margin-bottom: 10px;
+}
+
+.add-button {
+  height: 20px;
+}
+
+textarea {
+  resize: none;
+  width: 400px;
+}
+
+.border {
+  display: flex;
+  width: 500px;
+  border: 1px solid tomato;
+  /* outline: 1px solid tomato; */
+}
