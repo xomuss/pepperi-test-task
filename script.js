@@ -37,6 +37,27 @@ const inputChange = document.querySelector('.formInput');
 const listMarkUp = document.querySelector('.listMarkUp');
 const sortByNameBtn = document.querySelector('.button-sort-by-name');
 const sortByValueBtn = document.querySelector('.button-sort-by-value');
+const deleteBtn = document.querySelector('.button-delete');
+const selectedItems = listMarkUp.childNodes;
+
+function onListItemClick(e) {
+  console.log(e.target);
+  const curentItem = e.target;
+  curentItem.classList.toggle('selected');
+}
+
+function onDeleteBtnClick() {
+  // const filteredItems = selectedItems.filter(item => !item.selected);
+  let filteredItems = [];
+  console.log(selectedItems);
+  for (let i = 0; i < selectedItems.length; i++) {
+    if (!selectedItems[i].classList.contains('selected')) {
+      filteredItems.push(selectedItems[i].innerHTML);
+    }
+  }
+  makeMarkUp(filteredItems);
+  pairsList = [...filteredItems];
+}
 
 function sortByParam(array, param) {
   let objs = [];
@@ -76,17 +97,17 @@ function onSubmit(event) {
   event.preventDefault();
   const inputValue = inputChange.value;
   pairsList.push(inputValue);
-  console.log(pairsList);
 
   makeMarkUp(pairsList);
 }
 
 function makeMarkUp(arr) {
   const markUp = arr.map(pair => `<li>${pair}</li>`).join('');
-  console.log(markUp);
   listMarkUp.innerHTML = markUp;
 }
 
 formSubmit.addEventListener('submit', onSubmit);
 sortByNameBtn.addEventListener('click', onSortByNameBtnClick);
 sortByValueBtn.addEventListener('click', onSortByValueBtnClick);
+listMarkUp.addEventListener('click', onListItemClick);
+deleteBtn.addEventListener('click', onDeleteBtnClick);
