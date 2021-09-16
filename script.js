@@ -1,37 +1,5 @@
 'use strict';
 
-// Рефы на 5 кнопок + на инпут + на ДИВ под список
-// на классе слушаем ИНПУТ
-// создать начальное состояние под список
-// сделать рендер для разметки списка
-//
-
-class ListProcessor {
-  pairsList = [];
-
-  constructor() {
-    this.pairsList = [
-      'batman=hero',
-      'alex=bad',
-      'spider=man',
-      'cent=dollar',
-      'euro=money',
-      'asc=blabla',
-    ];
-  }
-
-  addRecord(newRecord) {
-    this.pairsList.push(newRecord);
-  }
-
-  print() {
-    console.log('OMG - ', this.pairsList);
-  }
-}
-
-let pairsList = [];
-let hasError = false;
-
 const formSubmit = document.querySelector('.signup_form_add');
 const inputChange = document.querySelector('.formInput');
 const listMarkUp = document.querySelector('.listMarkUp');
@@ -41,6 +9,9 @@ const deleteBtn = document.querySelector('.button-delete');
 const showXMLBtn = document.querySelector('.button-show-xml');
 const selectedItems = listMarkUp.childNodes;
 
+let pairsList = [];
+let hasError = false;
+
 function onListItemClick(e) {
   console.log(e.target);
   const curentItem = e.target;
@@ -48,9 +19,7 @@ function onListItemClick(e) {
 }
 
 function onDeleteBtnClick() {
-  // const filteredItems = selectedItems.filter(item => !item.selected);
   let filteredItems = [];
-  console.log(selectedItems);
   for (let i = 0; i < selectedItems.length; i++) {
     if (!selectedItems[i].classList.contains('selected')) {
       filteredItems.push(selectedItems[i].innerHTML);
@@ -106,8 +75,8 @@ function onSubmit(event) {
     alert('please write pair like name=value');
     return;
   }
-  pairsList.push(inputValue);
 
+  pairsList.push(inputValue);
   makeMarkUp(pairsList);
 }
 
