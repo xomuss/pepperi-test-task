@@ -31,13 +31,14 @@ class ListProcessor {
 
 let pairsList = [];
 let hasError = false;
-let dsada = [];
+
 const formSubmit = document.querySelector('.signup_form_add');
 const inputChange = document.querySelector('.formInput');
 const listMarkUp = document.querySelector('.listMarkUp');
 const sortByNameBtn = document.querySelector('.button-sort-by-name');
 const sortByValueBtn = document.querySelector('.button-sort-by-value');
 const deleteBtn = document.querySelector('.button-delete');
+const showXMLBtn = document.querySelector('.button-show-xml');
 const selectedItems = listMarkUp.childNodes;
 
 function onListItemClick(e) {
@@ -93,9 +94,18 @@ function onSortByValueBtnClick() {
   makeMarkUp(sortedArray);
 }
 
+function isValid(string) {
+  return string.match(/^\w+\s*=\s*\w+$/i) !== null;
+}
+
 function onSubmit(event) {
   event.preventDefault();
   const inputValue = inputChange.value;
+
+  if (!isValid(inputValue)) {
+    alert('please write pair like name=value');
+    return;
+  }
   pairsList.push(inputValue);
 
   makeMarkUp(pairsList);
@@ -106,8 +116,19 @@ function makeMarkUp(arr) {
   listMarkUp.innerHTML = markUp;
 }
 
+const onShowXMLBtnClick = function () {
+  let xml = '<root>';
+  pairsList.forEach(pair => {
+    const arr = pair.split('=');
+    xml += `<item><name>${arr[0]}</name><value>${arr[1]}</value></item>`;
+  });
+  xml += '</root>';
+  alert(xml);
+};
+
 formSubmit.addEventListener('submit', onSubmit);
 sortByNameBtn.addEventListener('click', onSortByNameBtnClick);
 sortByValueBtn.addEventListener('click', onSortByValueBtnClick);
 listMarkUp.addEventListener('click', onListItemClick);
 deleteBtn.addEventListener('click', onDeleteBtnClick);
+showXMLBtn.addEventListener('click', onShowXMLBtnClick);
