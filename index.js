@@ -12,8 +12,32 @@ const selectedItems = listMarkUp.childNodes;
 let pairsList = [];
 let hasError = false;
 
+// input validation
+function isValid(string) {
+  return string.match(/^\w+\s*=\s*\w+$/i) !== null;
+}
+
+// add new pair and render markup
+function onSubmit(event) {
+  event.preventDefault();
+  const inputValue = input.value;
+
+  if (!isValid(inputValue)) {
+    alert('please write pair like name=value');
+    return;
+  }
+
+  pairsList.push(inputValue);
+  makeMarkUp(pairsList);
+}
+
+function makeMarkUp(arr) {
+  const markUp = arr.map(pair => `<li>${pair}</li>`).join('');
+  listMarkUp.innerHTML = markUp;
+}
+
+// select items for delete
 function onListItemClick(e) {
-  console.log(e.target);
   const curentItem = e.target;
   curentItem.classList.toggle('selected');
 }
@@ -29,6 +53,7 @@ function onDeleteBtnClick() {
   pairsList = [...filteredItems];
 }
 
+// sort function
 function sortByParam(array, param) {
   let objs = [];
   let result = [];
@@ -63,28 +88,7 @@ function onSortByValueBtnClick() {
   makeMarkUp(sortedArray);
 }
 
-function isValid(string) {
-  return string.match(/^\w+\s*=\s*\w+$/i) !== null;
-}
-
-function onSubmit(event) {
-  event.preventDefault();
-  const inputValue = input.value;
-
-  if (!isValid(inputValue)) {
-    alert('please write pair like name=value');
-    return;
-  }
-
-  pairsList.push(inputValue);
-  makeMarkUp(pairsList);
-}
-
-function makeMarkUp(arr) {
-  const markUp = arr.map(pair => `<li>${pair}</li>`).join('');
-  listMarkUp.innerHTML = markUp;
-}
-
+// show XML
 const onShowXMLBtnClick = function () {
   let xml = '<root>';
   pairsList.forEach(pair => {
