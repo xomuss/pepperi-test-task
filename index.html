@@ -8,47 +8,40 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Test111</h1>
-    <form class="signup_form_add" name="signup_form" autocomplete="on" novalidate>
-        <label>
-            Name=Value Pair
-            <input class="formInput" type="name" value="" name="name" autofocus placeholder="Name=Value" required />
-        </label>
-        <button class="add-button" type="submit">Add</button>
-    </form>
+    <div class="container">
+      <header class="header">Test</header>
+      <main>
+        <form class="form" >
+          <label class="form-label" for="pair-input">Name/Value Pair</label>
+          <input class="form-input" id="pair-input" type="text" placeholder="Name=Value" />
+          <button class="form-button" type="submit">Add</button>
+        </form>
+        
+        <section >
+          <p class="text">Name/Value Paie List</p>
 
-    <div class="border">
-        <ul class="listMarkUp">
-            <li>value</li>
-            <li>boom</li>
-            <li>candy</li>
-        </ul>
-        <div class="button-list-block">
-            <button class="button-sort-by-name" type="button">Sort by Name</button>
-            <button class="button-sort-by-value" type="button">Sort by Value</button>
-            <button class="button-delete" type="button">Delete</button>
-            <button class="button-show-xml" type="button">Show XML</button>
-        </div>
+          <div class="pair-list-container">
+            <ul class="pair-list"></ul>
+            
+            <ul class="buttons-list">
+              <li>
+                <button class="button-sort-by-name" type="button">Sort by Name</button>
+              </li>
+              <li>
+                <button class="button-sort-by-value" type="button">Sort by Value</button>
+              </li>
+              <li>
+                <button class="button-delete" type="button">Delete</button>
+              </li>
+              <li>
+                <button class="button-show-xml" type="button">Show XML</button>
+              </li>
+            </ul>
+          </div> 
+        </section>
+      </main>
     </div>
 
-
-    <!-- <form class="signup_form" name="list-form" autocomplete="on" novalidate>
-        <label>
-            Name=Value Pair List
-            <textarea name="feedback" rows="5" placeholder="Type your message here...">
-
-            </textarea>
-    
-        </label>
-            <div class="button-list-block">
-                <button class="button-list" type="button">Sort by Name</button>
-                <button class="button-list" type="button">Sort by Value</button>
-                <button class="button-list" type="button">Delete</button>
-                <button class="button-list" type="button">Show XML</button>
-            </div>
-
-    </form> -->
-
-    <script src="./script.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

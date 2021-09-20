@@ -1,8 +1,8 @@
 'use strict';
 
-const formSubmit = document.querySelector('.signup_form_add');
-const inputChange = document.querySelector('.formInput');
-const listMarkUp = document.querySelector('.listMarkUp');
+const form = document.querySelector('.form');
+const input = document.querySelector('.form-input');
+const listMarkUp = document.querySelector('.pair-list');
 const sortByNameBtn = document.querySelector('.button-sort-by-name');
 const sortByValueBtn = document.querySelector('.button-sort-by-value');
 const deleteBtn = document.querySelector('.button-delete');
@@ -69,7 +69,7 @@ function isValid(string) {
 
 function onSubmit(event) {
   event.preventDefault();
-  const inputValue = inputChange.value;
+  const inputValue = input.value;
 
   if (!isValid(inputValue)) {
     alert('please write pair like name=value');
@@ -95,7 +95,7 @@ const onShowXMLBtnClick = function () {
   alert(xml);
 };
 
-formSubmit.addEventListener('submit', onSubmit);
+form.addEventListener('submit', onSubmit);
 sortByNameBtn.addEventListener('click', onSortByNameBtnClick);
 sortByValueBtn.addEventListener('click', onSortByValueBtnClick);
 listMarkUp.addEventListener('click', onListItemClick);
